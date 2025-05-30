@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,22 +53,32 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // PRD specific colors
+        'prd-background': '#F3F3F9',
+        'prd-surface': '#FFFFFF',
+        'prd-sidebar': '#E9EBEC',
+        'prd-primary-text': '#212529',
+        'prd-secondary-text': '#878A99',
+        'prd-accent-blue': '#299CDB',
+        'prd-accent-red': '#F06548',
+        'prd-accent-yellow': '#F5B84C',
+        'prd-accent-green': '#0AB39C',
+        'prd-border': '#E9EBEC',
+        // Simplified sidebar color from PRD (replaces the more complex object)
+        sidebar: '#E9EBEC',
 			},
 			borderRadius: {
+        // This setup with --radius: 0.5rem in CSS allows:
+        // rounded-lg (config) -> 0.5rem
+        // rounded-md (config) -> 0.375rem (PRD default for cards)
+        // rounded-sm (config) -> 0.25rem (PRD default for buttons)
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
